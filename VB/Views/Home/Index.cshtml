@@ -1,3 +1,4 @@
+@model CS.Model.MyViewModel
 <script type="text/javascript">
     function OnFocusedRowChanged(s, e) {
         gvProducts.PerformCallback();
@@ -13,16 +14,15 @@
     }
 </script>
 
-@Using (Html.BeginForm(New With {.Controller = "Home", .Action = "ExportTo"}))
+@using(Html.BeginForm(new { Controller = "Home", Action = "ExportTo" })) {
     @Html.Partial("GridViewPartialCategories", Model.Categories)
-    @<br />
+    <br />
     @Html.Partial("GridViewPartialProducts", Model.Products)
-    @<br />
-    @Html.DevExpress().Button( _
-        Sub(settings)
-            settings.Name = "btnExport"
-            settings.Text = "Export"
-            settings.UseSubmitBehavior = True
-            settings.ClientSideEvents.Click = "function(s, e) { BeforeExport(s); }"
-        End Sub).GetHtml()
-End Using
+    <br />
+    @Html.DevExpress().Button(settings => {
+        settings.Name = "btnExport";
+        settings.Text = "Export";
+        settings.UseSubmitBehavior = true;
+        settings.ClientSideEvents.Click = "function(s, e) { BeforeExport(s); }";
+    }).GetHtml()
+}

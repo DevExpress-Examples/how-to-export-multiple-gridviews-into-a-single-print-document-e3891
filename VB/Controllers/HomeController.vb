@@ -23,9 +23,9 @@ Namespace CS.Controllers
         End Function
 
         Public Function ExportTo(ByVal MasterRowKey As Integer) As ActionResult
-            Dim ps As New PrintingSystem()
+            Dim ps As New PrintingSystemBase()
 
-            Dim link1 As New PrintableComponentLink(ps)
+            Dim link1 As New PrintableComponentLinkBase(ps)
             Dim categoriesGridSettings As New GridViewSettings()
             categoriesGridSettings.Name = "gvCategories"
             categoriesGridSettings.KeyFieldName = "CategoryID"
@@ -34,7 +34,7 @@ Namespace CS.Controllers
             categoriesGridSettings.Columns.Add("Description")
             link1.Component = GridViewExtension.CreatePrintableObject(categoriesGridSettings, MyModel.GetCategories())
 
-            Dim link2 As New PrintableComponentLink(ps)
+            Dim link2 As New PrintableComponentLinkBase(ps)
             Dim productsGridSettings As New GridViewSettings()
             productsGridSettings.Name = "gvProducts"
             productsGridSettings.KeyFieldName = "ProductID"
@@ -44,7 +44,7 @@ Namespace CS.Controllers
             productsGridSettings.Columns.Add("UnitPrice")
             link2.Component = GridViewExtension.CreatePrintableObject(productsGridSettings, MyModel.GetProducts(MasterRowKey))
 
-            Dim compositeLink As New CompositeLink(ps)
+            Dim compositeLink As New CompositeLinkBase(ps)
             compositeLink.Links.AddRange(New Object() { link1, link2 })
             compositeLink.CreateDocument()
 
@@ -54,9 +54,9 @@ Namespace CS.Controllers
             Return result
         End Function
 
-        Private Function CreateExcelExportResult(ByVal link As CompositeLink) As FileStreamResult
+        Private Function CreateExcelExportResult(ByVal link As CompositeLinkBase) As FileStreamResult
             Dim stream As New MemoryStream()
-            link.PrintingSystem.ExportToXls(stream)
+            link.PrintingSystemBase.ExportToXls(stream)
             stream.Position = 0
             Dim result As New FileStreamResult(stream, "application/xls")
             result.FileDownloadName = "MyData.xls"

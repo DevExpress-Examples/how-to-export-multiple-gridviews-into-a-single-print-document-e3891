@@ -20,9 +20,9 @@ namespace CS.Controllers {
         }
 
         public ActionResult ExportTo(int MasterRowKey) {
-            PrintingSystem ps = new PrintingSystem();
+            var ps = new PrintingSystemBase();
 
-            PrintableComponentLink link1 = new PrintableComponentLink(ps);
+            var link1 = new PrintableComponentLinkBase(ps);
             GridViewSettings categoriesGridSettings = new GridViewSettings();
             categoriesGridSettings.Name = "gvCategories";
             categoriesGridSettings.KeyFieldName = "CategoryID";
@@ -31,7 +31,7 @@ namespace CS.Controllers {
             categoriesGridSettings.Columns.Add("Description");
             link1.Component = GridViewExtension.CreatePrintableObject(categoriesGridSettings, MyModel.GetCategories());
 
-            PrintableComponentLink link2 = new PrintableComponentLink(ps);
+            var link2 = new PrintableComponentLinkBase(ps);
             GridViewSettings productsGridSettings = new GridViewSettings();
             productsGridSettings.Name = "gvProducts";
             productsGridSettings.KeyFieldName = "ProductID";
@@ -41,7 +41,7 @@ namespace CS.Controllers {
             productsGridSettings.Columns.Add("UnitPrice");
             link2.Component = GridViewExtension.CreatePrintableObject(productsGridSettings, MyModel.GetProducts(MasterRowKey));
 
-            CompositeLink compositeLink = new CompositeLink(ps);
+            var compositeLink = new CompositeLinkBase(ps);
             compositeLink.Links.AddRange(new object[] { link1, link2 });
             compositeLink.CreateDocument();
 
@@ -51,9 +51,9 @@ namespace CS.Controllers {
             return result;
         }
 
-        FileStreamResult CreateExcelExportResult(CompositeLink link) {
+        FileStreamResult CreateExcelExportResult(CompositeLinkBase link) {
             MemoryStream stream = new MemoryStream();
-            link.PrintingSystem.ExportToXls(stream);
+            link.PrintingSystemBase.ExportToXls(stream);
             stream.Position = 0;
             FileStreamResult result = new FileStreamResult(stream, "application/xls");
             result.FileDownloadName = "MyData.xls";

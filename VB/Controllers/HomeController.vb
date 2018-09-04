@@ -4,6 +4,8 @@ Imports System.Web
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraPrintingLinks
 Imports CS.Model
+Imports System.Web.Mvc
+Imports DevExpress.Web.Mvc
 
 Namespace CS.Controllers
     Public Class HomeController

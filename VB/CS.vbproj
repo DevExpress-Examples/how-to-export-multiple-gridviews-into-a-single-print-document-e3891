@@ -187,17 +187,17 @@
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.vbhtml" />
+    <Content Include="Views\Home\Index.vbhtml" />
+    <Content Include="Views\Shared\_Layout.vbhtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Views\Home\GridViewPartialCategories.cshtml" />
+    <Content Include="Views\Home\GridViewPartialCategories.vbhtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\GridViewPartialProducts.cshtml" />
+    <Content Include="Views\Home\GridViewPartialProducts.vbhtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

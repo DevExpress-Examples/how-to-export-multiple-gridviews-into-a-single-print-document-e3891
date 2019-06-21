@@ -8,6 +8,9 @@
 * [Index.cshtml](./CS/Views/Home/Index.cshtml)
 <!-- default file list end -->
 # How to export multiple GridViews into a single print document
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/e3891)**
+<!-- run online end -->
 
 
 <p>This example illustrates how to create several MVC GridView Extensions into a single XLS document via the <a href="https://documentation.devexpress.com/CoreLibraries/DevExpress.XtraPrinting.CorePrintableComponentLinkBase.members"><u>PrintableComponentLinkBase</u></a> entries (the XtraPrinting library).<br /> These entries should be combined with the use of the IPrintable objects. The <a href="http://documentation.devexpress.com/#AspNet/DevExpressWebMvcGridViewExtension_CreatePrintableObjecttopic"><u>GridViewExtension.CreatePrintableObject</u></a> method allows creating the required IPrintable object from the GridView based on its GridViewSettings.</p>

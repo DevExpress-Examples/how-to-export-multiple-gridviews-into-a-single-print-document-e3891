@@ -9,7 +9,7 @@
 <!-- default file list end -->
 # How to export multiple GridViews into a single print document
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e3891)**
+**[[Run Online]](https://codecentral.devexpress.com/e3891/)**
 <!-- run online end -->
 
 
